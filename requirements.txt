@@ -1,0 +1,62 @@
+# Google Cloud Platform dependencies
+google-cloud-aiplatform>=1.40.0
+google-cloud-pubsub>=2.18.0
+google-cloud-bigquery>=3.13.0
+google-cloud-logging>=3.8.0
+google-cloud-storage>=2.10.0
+
+# Vertex AI and Generative AI
+vertexai>=1.38.0
+
+# Cloud Functions Framework
+functions-framework>=3.5.0
+
+# Web framework for local testing
+flask>=2.3.0
+uvicorn>=0.24.0
+
+# Data processing and analysis
+pandas>=2.1.0
+numpy>=1.24.0
+
+# HTTP requests and API integrations
+requests>=2.31.0
+urllib3>=2.0.0
+
+# JSON and data validation
+jsonschema>=4.19.0
+
+# Logging and monitoring
+structlog>=23.2.0
+
+# Security and cryptography
+cryptography>=41.0.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# Type hints and development
+typing-extensions>=4.8.0
+
+# Regular expressions and text processing
+regex>=2023.10.3
+
+# Date and time utilities
+python-dateutil>=2.8.2
+
+# Configuration management
+pyyaml>=6.0.1
+
+# API key management (optional)
+keyring>=24.2.0
+
+# Testing dependencies (optional)
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+mock>=5.1.0
+
+# Performance monitoring
+psutil>=5.9.0
+
+# Chronicle Security Operations (if available)
+# google-cloud-chronicle>=1.0.0  # Uncomment when available 

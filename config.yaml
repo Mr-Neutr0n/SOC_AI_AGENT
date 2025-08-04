@@ -1,0 +1,146 @@
+# SOC AI Agent Configuration
+
+# Google Cloud Platform Settings
+gcp:
+  project_id: "${GOOGLE_CLOUD_PROJECT}"
+  location: "us-central1"
+  service_account_key_path: "${GOOGLE_APPLICATION_CREDENTIALS}"
+
+# Vertex AI Configuration
+vertex_ai:
+  model_name: "gemini-1.5-pro-001"
+  location: "us-central1"
+  max_tokens: 8192
+  temperature: 0.1
+  top_p: 0.8
+
+# BigQuery Configuration
+bigquery:
+  dataset_id: "soc_agent_data"
+  table_id: "security_incidents"
+  location: "US"
+
+# Pub/Sub Configuration
+pubsub:
+  security_alerts_topic: "security-alerts"
+  security_notifications_topic: "security-notifications"
+  subscription_name: "soc-agent-alerts"
+
+# Threat Intelligence Sources
+threat_intelligence:
+  virustotal:
+    api_key: "${VIRUSTOTAL_API_KEY}"
+    enabled: true
+    rate_limit: 4  # requests per minute for free tier
+  
+  abuseipdb:
+    api_key: "${ABUSEIPDB_API_KEY}"
+    enabled: true
+    rate_limit: 1000  # requests per day for free tier
+  
+  # Add more sources as needed
+  # shodan:
+  #   api_key: "${SHODAN_API_KEY}"
+  #   enabled: false
+
+# Notification Configuration
+notifications:
+  slack:
+    webhook_url: "${SLACK_WEBHOOK_URL}"
+    enabled: true
+    severity_threshold: 7
+  
+  teams:
+    webhook_url: "${TEAMS_WEBHOOK_URL}"
+    enabled: false
+    severity_threshold: 8
+  
+  email:
+    webhook_url: "${EMAIL_WEBHOOK_URL}"
+    enabled: false
+    severity_threshold: 9
+
+# Analysis Configuration
+analysis:
+  severity_thresholds:
+    low: 3
+    medium: 5
+    high: 7
+    critical: 9
+  
+  confidence_levels:
+    low: 0.3
+    medium: 0.6
+    high: 0.8
+  
+  false_positive_threshold: 80  # percentage
+  
+  # Timeout settings (in seconds)
+  timeouts:
+    threat_intel_check: 10
+    ai_analysis: 60
+    notification_send: 5
+
+# Entity Extraction Configuration
+entity_extraction:
+  ip_validation: true
+  domain_validation: true
+  hash_validation: true
+  username_patterns:
+    - email
+    - user_equals
+    - user_colon
+  
+  # Regex patterns for custom entities
+  custom_patterns:
+    process_names: '\b[a-zA-Z0-9._-]+\.exe\b'
+    registry_keys: 'HKEY_[A-Z_]+\\[\\a-zA-Z0-9_-]+'
+
+# Storage Configuration
+storage:
+  retention_days: 365
+  archive_after_days: 90
+  enable_clustering: true
+  partition_field: "timestamp"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  enable_cloud_logging: true
+  log_file: "/tmp/soc_agent.log"
+
+# Security Configuration
+security:
+  enable_encryption: true
+  mask_sensitive_data: true
+  audit_logs: true
+  
+  # Fields to mask in logs
+  sensitive_fields:
+    - "password"
+    - "token"
+    - "api_key"
+    - "secret"
+
+# Performance Configuration
+performance:
+  max_concurrent_alerts: 10
+  batch_size: 50
+  cache_ttl: 3600  # seconds
+  enable_caching: true
+
+# Feature Flags
+features:
+  enable_ai_analysis: true
+  enable_threat_intel: true
+  enable_notifications: true
+  enable_historical_context: true
+  enable_custom_models: false  # Future enhancement
+
+# Development/Testing Configuration
+development:
+  mock_threat_intel: false
+  sample_data_enabled: false
+  debug_mode: false
+  local_testing: false 
