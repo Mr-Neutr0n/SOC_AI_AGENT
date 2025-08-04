@@ -116,7 +116,7 @@ graph TB
 
 1. **Clone and setup the project**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Mr-Neutr0n/SOC_AI_AGENT.git
    cd SOC_AI_AGENT
    python setup.py
    ```
